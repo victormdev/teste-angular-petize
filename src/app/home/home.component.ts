@@ -1,12 +1,23 @@
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [],
+  imports: [CommonModule, FormsModule],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.css'
+  styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
+  username: string = '';
 
+  constructor(private router: Router) {}
+
+  onSubmit() {
+    if (this.username) {
+      this.router.navigate(['/profile', this.username]);
+    }
+  }
 }

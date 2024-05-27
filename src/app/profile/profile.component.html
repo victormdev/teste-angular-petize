@@ -7,38 +7,42 @@
 <div class="content">
     <div class="left">
         <div class="profile">
-            <img src="caminho/para/sua/imagem.jpg" alt="Foto de perfil">
-            <h2>Diego Silva</h2>
-            <p> diegoss.silva</p>
-            <p class="profile-description mt3">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <div class="user-info">
+                <img class="user-photo" [src]="user.avatar_url" alt="{{ user.login }}">
+                <div>
+                  <h2>{{ user.name }}</h2>
+                  <p>{{ user.login }}</p>
+                </div>
+              </div>
+            <p class="profile-description mt3">{{ user.bio }}</p>
 
             <div class="info mt3">
                 <img class="icon" src="../../assets/img/group.svg" alt="Ícone de seguidores">
-                <p>240 seguidores</p>
+                <p>{{ user.followers }} seguidores</p>
             </div>
             <div class="info">
                 <img class="icon" src="../../assets/img/heart.svg" alt="Ícone de seguidores">
-                <p>24 seguindo</p>
+                <p>{{ user.following }} seguindo</p>
             </div>
 
 
             <div class="info mt3">
                 <img class="icon" src="../../assets/img/company.svg" alt="Ícone de Petize">
-                <p>Petize</p>
+                <p>{{ user.company }}</p>
             </div>
             <div class="info">
                 <img class="icon" src="../../assets/img/location.svg" alt="Ícone de Petize">
-                <p>São Paulo</p>
+                <p>{{ user.location }}</p>
             </div>
 
             <div class="info">
                 <img class="icon" src="../../assets/img/email.svg" alt="Ícone de email">
-                <p>diego petize.com.br</p>
+                <p>{{ user.email }}</p>
             </div>
 
             <div class="info">
                 <img class="icon" src="../../assets/img/website.svg" alt="Ícone de website">
-                <p>www.diegosilva.com.br</p>
+                <p>{{ user.blog }}</p>
             </div>
 
             <div class="info">
@@ -50,14 +54,12 @@
     </div>
 
     <div class="right">
-        <div class="repository">
-            <h2>Repositório nome</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis
-                tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus
-                elit sed risus. Maecenas eget condimentum velit, sit amet feugiat lectus.</p>
+        <div class="repository" *ngFor="let repo of repos">
+            <h2>{{ repo.name }}</h2>
+            <p>{{ repo.description }}</p>
 
             <div class="info">
-                <p><img src="../../assets/img/star.svg" alt="Ícone de estrela">100 · Atualizado há 2 dias</p>
+                <p><img src="../../assets/img/star.svg" alt="Ícone de estrela">{{ repo.stargazers_count }} · Atualizado em {{ repo.updated_at }}</p>
             </div>
         </div>
     </div>
